@@ -15,8 +15,8 @@ import time
 import numpy as np
 cimport numpy as np
 cimport cython
-DTYPE = np.int
-FTYPE = np.float
+DTYPE = np.int_
+FTYPE = np.float64
 ctypedef np.int_t DTYPE_t
 ctypedef np.float_t FTYPE_t
 

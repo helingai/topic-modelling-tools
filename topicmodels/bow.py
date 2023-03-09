@@ -31,7 +31,7 @@ class BOW():
             self.token_key[v] = i
         self.V = len(self.token_key)
 
-        self.bow = np.zeros((self.D, self.V), dtype=np.int)
+        self.bow = np.zeros((self.D, self.V), dtype=np.int_)
 
         for d, doc in enumerate(docs):
             temp = collections.Counter(doc)

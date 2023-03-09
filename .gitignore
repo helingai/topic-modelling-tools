@@ -1,1 +1,5 @@
 topicmodels/samplers/samplers_lda.c
+.idea/
+build/
+topic_modelling_tools.egg-info/
+*.pyc
