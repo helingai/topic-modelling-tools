@@ -33,12 +33,12 @@ class LDAGibbs():
         self.V = len(self.token_key)
 
         self.tokens = np.array([self.token_key[t] for t in doc_list],
-                               dtype=np.int)
+                               dtype=np.int_)
         self.N = self.tokens.shape[0]
         self.topic_seed = np.random.random_integers(0, K-1, self.N)
 
         self.docid = [[i]*len(d) for i, d in enumerate(docs)]
-        self.docid = np.array(list(itertools.chain(*self.docid)), dtype=np.int)
+        self.docid = np.array(list(itertools.chain(*self.docid)), dtype=np.int_)
 
         self.alpha = 50/self.K
         self.beta = 200/self.V
@@ -63,7 +63,7 @@ class LDAGibbs():
         set to "seed" instead.
         """
 
-        assert seed.dtype == np.int and seed.shape == (self.N,)
+        assert seed.dtype == np.int_ and seed.shape == (self.N,)
         self.topic_seed = seed
 
     def set_sampled_topics(self, sampled_topics):
@@ -73,7 +73,7 @@ class LDAGibbs():
         Automatically generate term-topic and document-topic matrices.
         """
 
-        assert sampled_topics.dtype == np.int and \
+        assert sampled_topics.dtype == np.int_ and \
             len(sampled_topics.shape) <= 2
 
         if len(sampled_topics.shape) == 1:
@@ -289,14 +289,14 @@ class QueryGibbs():
 
         doc_list = list(itertools.chain(*self.docs))
         self.tokens = np.array([token_key[t] for t in doc_list],
-                               dtype=np.int)
+                               dtype=np.int_)
         self.N = self.tokens.shape[0]
         self.topic_seed = \
             np.random.random_integers(0, self.K-1, size=self.N)
 
         self.docid = [[i]*len(d) for i, d in enumerate(self.docs)]
         self.docid = np.array(list(itertools.chain(*self.docid)),
-                              dtype=np.int)
+                              dtype=np.int_)
 
         self.alpha = 50/self.K
 
@@ -319,7 +319,7 @@ class QueryGibbs():
         of tokens in LDA model)
         """
 
-        assert seed.dtype == np.int and seed.shape == (self.samples, self.N)
+        assert seed.dtype == np.int_ and seed.shape == (self.samples, self.N)
         self.topic_seed = seed
 
     def query(self, query_samples):
@@ -330,7 +330,7 @@ class QueryGibbs():
         """
 
         self.sampled_topics = np.zeros((self.samples, self.N),
-                                       dtype=np.int)
+                                       dtype=np.int_)
 
         for s in range(self.samples):            
 
@@ -339,7 +339,7 @@ class QueryGibbs():
                                            self.topic_seed,
                                            np.ascontiguousarray(
                                                self.tt[:, :, s],
-                                               dtype=np.float),
+                                               dtype=np.float64),
                                            self.N, self.K, self.D,
                                            self.alpha, query_samples)
 
