@@ -17,8 +17,8 @@ cimport numpy as np
 cimport cython
 DTYPE = np.int_
 FTYPE = np.float64
-ctypedef np.int_t DTYPE_t
-ctypedef np.float_t FTYPE_t
+ctypedef np.int64_t DTYPE_t
+ctypedef np.float64_t FTYPE_t
 
 #####################
 # code block for importing and initializing GSL
