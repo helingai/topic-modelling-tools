@@ -47,7 +47,7 @@ class RawDocs():
             except UnicodeDecodeError:
                 print("File does not have utf-8 encoding")
             self.docs = raw.splitlines()
-        elif isinstance(doc_data, collections.Iterable):
+        elif isinstance(doc_data, collections.abc.Iterable):
             try:
                 self.docs = [s.encode('utf-8').decode('utf-8')
                              for s in doc_data]
